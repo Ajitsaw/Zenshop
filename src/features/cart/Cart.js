@@ -10,7 +10,7 @@ function Cart() {
 
     return (
         <aside className={`${style.cart} ${isCart && style.active}`}>
-            your Cart is empty
+            Your cart is empty
         </aside>
     );
 }
