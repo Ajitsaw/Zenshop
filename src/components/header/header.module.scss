@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Dangrek&display=swap");
+
+// Variables
+$primary: #454545;
+$blue: #2879fe;
+
+header {
+    .top {
+        background-color: $blue;
+        text-align: center;
+        color: #fff;
+        padding: 15px 0;
+        font-size: 14px;
+    }
+    .logo {
+        font-family: "Dangrek", cursive;
+        color: $blue;
+        font-size: 50px;
+    }
+    .main {
+        padding: 20px;
+    }
+}

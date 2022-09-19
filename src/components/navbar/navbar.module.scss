@@ -1,0 +1,17 @@
+nav {
+    display: flex;
+    justify-content: center;
+    ul {
+        display: flex;
+        li {
+            a {
+                text-transform: none;
+                text-decoration: none;
+                margin: 0 30px;
+                &:hover {
+                    color: #2879fe;
+                }
+            }
+        }
+    }
+}
