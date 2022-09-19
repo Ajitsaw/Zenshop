@@ -8,22 +8,22 @@ const initialState = {
 
 export const getCart = createAsyncThunk({});
 
-const cartSlice = createSlice({
-    name: "Cart",
+const modeSlice = createSlice({
+    name: "mode",
     initialState,
     reducers: {
         addCart: (state, action) => {
             state.cartPost.push(action.payload);
         },
         deleteCart: (state, action) => {
-            state.cartPost.filter(item => item.id !== action.payload)
+            state.cartPost.filter((item) => item.id !== action.payload);
         },
-        toggleCart: (state, action) => {
-            state.toggle = action.payload;
+        toggleCart: (state) => {
+            state.toggle = !state.toggle;
         },
     },
 });
 
-export const { addCart, deleteCart, toggleCart } = cartSlice.actions;
+export const { addCart, deleteCart, toggleCart } = modeSlice.actions;
 
-export default cartSlice.reducer;
+export default modeSlice.reducer;

@@ -22,7 +22,7 @@ function Products() {
     // Debounced value
     const devalue = useDebounce(search);
 
-    // Get All the Store objects
+    // Get Product Object from Store
     const posts = useSelector((state) => state.allProducts.posts);
     const searchStatus = useSelector((state) => state.allProducts.searchStatus);
     // const error = useSelector((state) => state.allProducts.error);

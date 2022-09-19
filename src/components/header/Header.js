@@ -1,4 +1,6 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+
 // Bootstrap UI
 import { Container, Row, Col } from "react-bootstrap";
 
@@ -19,7 +21,11 @@ import Darkmode from "../../features/darkmode/Darkmode";
 
 import Navbar from "../navbar/Navbar";
 
+// Toggle Cart Reducer
+import { toggleCart } from "../../features/cart/cartSlice";
+
 function Header() {
+    const dispatch = useDispatch();
     return (
         <header>
             <div className={style.top}>
@@ -45,7 +51,10 @@ function Header() {
                                 <div className={style.single}>
                                     <VscSearch />
                                 </div>
-                                <div className={style.single}>
+                                <div
+                                    className={style.single}
+                                    onClick={() => dispatch(toggleCart(true))}
+                                >
                                     <BsBag />
                                 </div>
                                 <div className={style.single}>
