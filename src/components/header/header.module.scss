@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Dangrek&display=swap");
-
 // Variables
 $primary: #454545;
 $blue: #2879fe;
@@ -11,13 +9,32 @@ header {
         color: #fff;
         padding: 15px 0;
         font-size: 14px;
+        a {
+            color: #fff;
+        }
     }
     .logo {
-        font-family: "Dangrek", cursive;
         color: $blue;
-        font-size: 50px;
+        font-size: 70px;
+        line-height: 1;
+        display: flex;
     }
     .main {
-        padding: 20px;
+        padding: 10px 0;
+    }
+    .right {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        .single {
+            margin-left: 20px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            &:hover {
+                color: $blue;
+                transition: all 0.3s ease;
+            }
+        }
     }
 }

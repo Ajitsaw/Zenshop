@@ -1,3 +1,7 @@
+// Variables
+$primary: #454545;
+$blue: #2879fe;
+
 nav {
     display: flex;
     justify-content: center;
@@ -7,9 +11,10 @@ nav {
             a {
                 text-transform: none;
                 text-decoration: none;
-                margin: 0 30px;
+                margin: 0 20px;
+                color: $primary;
                 &:hover {
-                    color: #2879fe;
+                    color: $blue;
                 }
             }
         }
