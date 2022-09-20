@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import style from "../cart/cart.module.scss";
 
 // Toggle Cart Action
-import { toggleCart } from "./cartSlice";
+import { toggleCart, deleteCart } from "./cartSlice";
 
 // React Icon
 import { AiOutlineClose, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
@@ -44,7 +44,7 @@ function Cart() {
                                     />
                                     <span
                                         onClick={() =>
-                                            dispatch(toggleCart(false))
+                                            dispatch(deleteCart(item))
                                         }
                                     >
                                         <AiOutlineClose />
