@@ -13,6 +13,9 @@ import useDebounce from "../../hooks/useDebounce";
 // Components
 import ProductSingle from "./ProductSingle";
 
+// Scss
+import style from "../products/product.module.scss";
+
 function Products() {
     const dispatch = useDispatch();
 
@@ -35,12 +38,12 @@ function Products() {
             dispatch(getProducts());
         }
     }, [devalue, dispatch]);
-    console.log(posts);
+
     return (
-        <div className="products">
+        <div className={style.products}>
             <Row className="justify-content-center">
                 <Col lg={"8"}>
-                    <div className="search">
+                    <div className={style.search}>
                         <input
                             type="search"
                             name="search"
@@ -70,12 +73,12 @@ function Products() {
                         </Col>
                     </Row>
                 ) : posts?.length === 0 ? (
-                    <div className="error">
+                    <div className={style.error}>
                         <img
                             src="https://cdn.dribbble.com/users/1665077/screenshots/10738715/media/90712c2d7fd869e9d7586a108024d62c.gif"
                             alt="gif"
                         />
-                        There is no PRODUCTS found
+                        There is no products found
                     </div>
                 ) : (
                     posts?.map((item) => (

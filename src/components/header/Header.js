@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 // Bootstrap UI
 import { Container, Row, Col } from "react-bootstrap";
@@ -26,6 +26,10 @@ import { toggleCart } from "../../features/cart/cartSlice";
 
 function Header() {
     const dispatch = useDispatch();
+
+    // Get Cart Object from Store
+    const cartProducts = useSelector((state) => state.allCart.cartPost);
+
     return (
         <header>
             <div className={style.top}>
@@ -56,6 +60,7 @@ function Header() {
                                     onClick={() => dispatch(toggleCart(true))}
                                 >
                                     <BsBag />
+                                    <span>{cartProducts.length}</span>
                                 </div>
                                 <div className={style.single}>
                                     <IoPersonOutline />

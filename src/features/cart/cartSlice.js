@@ -13,10 +13,13 @@ const cartSlice = createSlice({
     initialState,
     reducers: {
         addCart: (state, action) => {
-            state.cartPost.push(action.payload);
+            state.cartPost.push({
+                ...action.payload.content,
+                count: 1,
+            });
         },
         deleteCart: (state, action) => {
-            state.cartPost.filter(item => item.id !== action.payload)
+            state.cartPost.filter((item) => item.id !== action.payload);
         },
         toggleCart: (state, action) => {
             state.toggle = action.payload;

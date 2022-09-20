@@ -1,8 +1,12 @@
 // Variables
 $primary: #454545;
 $blue: #2879fe;
+$pink: #ff497c;
 
 header {
+    position: absolute;
+    top: 0;
+    width: 100%;
     .top {
         background-color: $blue;
         text-align: center;
@@ -31,6 +35,21 @@ header {
             font-size: 20px;
             cursor: pointer;
             transition: all 0.3s ease;
+            position: relative;
+            span {
+                background-color: $pink;
+                width: 20px;
+                height: 20px;
+                font-size: 13px;
+                border-radius: 100%;
+                color: #fff;
+                position: absolute;
+                top: -5px;
+                right: -10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
             &:hover {
                 color: $blue;
                 transition: all 0.3s ease;

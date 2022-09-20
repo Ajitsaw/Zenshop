@@ -19,13 +19,16 @@ function Hero() {
                 <Row className="align-items-center">
                     <Col lg="4">
                         <div className="text">
-                            <h1>
-                                Lorem Ipsum Dolar
-                                <br />
-                                Sit amaet
-                            </h1>
-                            <h4>This is sub heading</h4>
-                            <Link className="button">Shop now</Link>
+                            <h1>Lorem Ipsum Dolar Sit amaet</h1>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. squam numquam deleniti
+                                adipisci iure, sit dolorem rem placeat officiis
+                                soluta ad.
+                            </p>
+                            <Link className="button button__pink mt-3">
+                                Shop now
+                            </Link>
                         </div>
                     </Col>
                     <Col lg="7" className="offset-lg-1">
