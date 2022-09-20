@@ -19,7 +19,6 @@ const cartSlice = createSlice({
             });
         },
         deleteCart: (state, action) => {
-            console.log(state.cartPost);
             state.cartPost = state.cartPost.filter((item) => item.id !== action.payload);
         },
         toggleCart: (state, action) => {
