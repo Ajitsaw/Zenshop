@@ -115,10 +115,12 @@ $pink: #ff497c;
                     flex: 1;
                     h4 {
                         margin-bottom: 20px;
+                        font-size: 18px;
                     }
                     .price {
                         color: $blue;
-                        font-size: 20px;
+                        font-size: 18px;
+                        font-weight: 600;
                     }
                 }
                 .control {

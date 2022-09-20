@@ -36,7 +36,7 @@ function Cart() {
                 <div className={style.list}>
                     {cartItems.length ? (
                         cartItems.map((item) => (
-                            <div className={style.single}>
+                            <div className={style.single} key={item.id}>
                                 <div className={style.image}>
                                     <img
                                         src={item.thumbnail}
@@ -44,7 +44,7 @@ function Cart() {
                                     />
                                     <span
                                         onClick={() =>
-                                            dispatch(deleteCart(item))
+                                            dispatch(deleteCart(item.id))
                                         }
                                     >
                                         <AiOutlineClose />
