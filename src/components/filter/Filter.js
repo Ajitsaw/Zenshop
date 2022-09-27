@@ -9,14 +9,14 @@ import Category from "./category/Category";
 import "../filter/Filter.module.scss";
 
 // Filter Api call
-import { getProducts } from "../../features/products/productSlice";
+import { getProducts, getFilterItems } from "../../features/products/productSlice";
 
 // Dispatch
 import { useDispatch } from "react-redux";
 
 function Filter() {
     const [filterState, setFilterState] = useState({
-        brand: "",
+        brand: [],
         category: "",
         rating: "",
         search: "",
@@ -28,20 +28,25 @@ function Filter() {
     useEffect(() => {
         console.log("useEffect");
         dispatch(getProducts(filterState));
+        dispatch(getFilterItems());
     }, [filterState, dispatch]);
-
-    const receiveCat = useCallback((e) => {
-        setFilterState((prev) => ({ ...prev, category: e }));
-    }, []);
 
     const receiveSearch = useCallback((e) => {
         setFilterState((prev) => ({ ...prev, search: e }));
     }, []);
 
+    const receiveCat = useCallback((e) => {
+        setFilterState((prev) => ({ ...prev, category: e }));
+    }, []);
+
+    const receivebrand = useCallback((e) => {
+        setFilterState((prev) => ({ ...prev, brand: [...e] }));
+    }, []);
+
     return (
         <aside>
             <Search state={receiveSearch} />
-            <Brand />
+            <Brand state={receivebrand} />
             <Category state={receiveCat} />
         </aside>
     );

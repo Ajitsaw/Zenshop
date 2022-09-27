@@ -13,8 +13,7 @@ function Search({ state }) {
     // Debounced value
     const devalue = useDebounce(search);
     useEffect(() => {
-        console.log(devalue);
-        state(devalue)
+        state(devalue);
     }, [devalue, state]);
 
     return (

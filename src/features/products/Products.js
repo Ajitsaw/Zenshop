@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 // Bootstrap UI
 import { Row, Col } from "react-bootstrap";
 
-
 // Components
 import ProductSingle from "./ProductSingle";
 
@@ -12,7 +11,6 @@ import ProductSingle from "./ProductSingle";
 import style from "../products/product.module.scss";
 
 function Products() {
-
     // Get Product Object from Store
     const posts = useSelector((state) => state.allProducts.posts);
     const searchStatus = useSelector((state) => state.allProducts.searchStatus);
@@ -24,12 +22,12 @@ function Products() {
                 {searchStatus === "loading" ? (
                     <Row className="justify-content-center">
                         <Col md="auto">
-                        <div className={style.loader}>
-                            <img
-                                src="https://cdn.dribbble.com/userupload/2775721/file/original-e8c27e5d40d333d0c5c3b1d96597d08e.gif?compress=1&resize=752x"
-                                alt="loader"
-                            />
-                        </div>
+                            <div className={style.loader}>
+                                <img
+                                    src="https://cdn.dribbble.com/userupload/2775721/file/original-e8c27e5d40d333d0c5c3b1d96597d08e.gif?compress=1&resize=752x"
+                                    alt="loader"
+                                />
+                            </div>
                         </Col>
                     </Row>
                 ) : posts?.length === 0 ? (
@@ -38,7 +36,7 @@ function Products() {
                             src="https://cdn.dribbble.com/users/2026891/screenshots/9714720/media/0d90d5551fed3568415d6a40d2ea3170.png?compress=1&resize=400x300&vertical=top"
                             alt="gif"
                         />
-                        There is no products found
+                        no products found
                     </div>
                 ) : (
                     posts?.map((item) => (

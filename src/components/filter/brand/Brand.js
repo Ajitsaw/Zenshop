@@ -1,20 +1,29 @@
-import React, { memo, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 import style from "../brand/Brand.module.scss";
 
-function Brand() {
+function Brand({state}) {
     const [open, isOpen] = useState(false);
     const [change, setChange] = useState([]);
 
-    console.log(change);
     // Get Product Object from Store
     const posts = useSelector((state) => state.allProducts.brands);
 
     const handelCheck = (e) => {
-        setChange.push(e.target.value);
+        let value = e.target.value;
+        if (!change.includes(value)) {
+            setChange((prev) => [...prev, value]);
+        } else {
+            let filter = change.filter((item) => item !== value);
+            setChange(filter);
+        }
     };
-    
+
+    useEffect(() => {
+        state(change);
+    }, [change, state]);
+
     return (
         <div className={style.group}>
             <div

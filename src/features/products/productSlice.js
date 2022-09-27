@@ -15,12 +15,30 @@ const url = "https://dummyjson.com/products";
 export const getProducts = createAsyncThunk("products/fetch", async (data) => {
     try {
         const res = await axios.get(url);
-        console.log(data);
+        console.log(res.data.products);
+        console.log(data.brand);
         // Filter the products
-        if (!data.search || !data.brand || !data.category) {
+        if (
+            data.search === "" &&
+            data.brand.length === 0 &&
+            data.category === ""
+        ) {
             return res.data.products;
         } else {
-            let filtered = [];
+            let filtered = res.data.products
+                .filter((item) => {
+                    return item?.title
+                        ?.toLowerCase()
+                        .includes(data.search.toLowerCase());
+                })
+                .filter((item) => item?.category === data.category)
+                .filter((item) =>
+                    data.brand.filter((ele) => {
+                        if (item.brand === ele) {
+                            return item;
+                        }
+                    })
+                );
             return filtered;
         }
     } catch (err) {
@@ -28,42 +46,14 @@ export const getProducts = createAsyncThunk("products/fetch", async (data) => {
     }
 });
 
-// export const searchProducts = createAsyncThunk(
-//     "products/search",
-//     async (getValue) => {
-//         try {
-//             const res = await axios.get(url);
-//             const filtered = res.data.products.filter((item) => {
-//                 return item?.title
-//                     ?.toLowerCase()
-//                     .includes(getValue.toLowerCase());
-//             });
-//             return filtered;
-//         } catch (err) {
-//             return err.message;
-//         }
-//     }
-// );
-
-// export const filterProducts = createAsyncThunk(
-//     "products/filter",
-//     async (getValue) => {
-//         try {
-//             const res = await axios.get(url);
-//             const filtered = res.data.products.filter((item) => {
-//                 return (
-//                     item?.category
-//                         ?.toLowerCase()
-//                         .includes(getValue.category.toLowerCase()) ||
-//                     item?.title?.toLowerCase().includes(getValue.toLowerCase())
-//                 );
-//             });
-//             return filtered;
-//         } catch (err) {
-//             return err.message;
-//         }
-//     }
-// );
+export const getFilterItems = createAsyncThunk("filter/fetch", async () => {
+    try {
+        const res = await axios.get(url);
+        return res.data.products;
+    } catch (err) {
+        return err.message;
+    }
+});
 
 const productSlice = createSlice({
     name: "products",
@@ -78,6 +68,13 @@ const productSlice = createSlice({
         builder.addCase(getProducts.fulfilled, (state, action) => {
             state.searchStatus = "idle";
             state.posts = action.payload;
+        });
+        builder.addCase(getProducts.rejected, (state, action) => {
+            state.searchStatus = "failed";
+            state.error = action.error.message;
+        });
+        builder.addCase(getFilterItems.fulfilled, (state, action) => {
+            state.searchStatus = "idle";
 
             // Push all the brand names
             const filteredBrand = [
@@ -94,10 +91,6 @@ const productSlice = createSlice({
                 ),
             ];
             state.category = [...filteredCategory];
-        });
-        builder.addCase(getProducts.rejected, (state, action) => {
-            state.searchStatus = "failed";
-            state.error = action.error.message;
         });
     },
 });
