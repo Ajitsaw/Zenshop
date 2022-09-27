@@ -13,17 +13,36 @@ const cartSlice = createSlice({
     initialState,
     reducers: {
         addCart: (state, action) => {
-            state.cartPost.push({
-                ...action.payload.content,
-                count: 1,
-            });
+            // check if Product already exist
+            const found = state.cartPost.some(
+                (el) => el.id === action.payload.content.id
+            );
+
+            // If product not exist then push
+            if (!found) {
+                state.cartPost.push({
+                    ...action.payload.content,
+                    count: 1,
+                });
+            } else {
+                // eslint-disable-next-line array-callback-return
+                state.cartPost.map((item) => {
+                    if (item.id === action.payload.content.id) {
+                        item.count += 1;
+                    }
+                });
+            }
         },
         deleteCart: (state, action) => {
-            state.cartPost = state.cartPost.filter((item) => item.id !== action.payload);
+            state.cartPost = state.cartPost.filter(
+                (item) => item.id !== action.payload
+            );
         },
         toggleCart: (state, action) => {
             state.toggle = action.payload;
         },
+        increaseItem: (state, action) => {},
+        decreaseItem: (state, action) => {},
     },
 });
 

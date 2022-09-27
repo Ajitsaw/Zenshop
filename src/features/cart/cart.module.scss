@@ -1,6 +1,6 @@
 // Variables
 $primary: #333;
-$blue: #2879fe;
+$blue: #088dff;
 $pink: #ff497c;
 
 .cart {
@@ -149,8 +149,10 @@ $pink: #ff497c;
                 display: flex;
                 flex-flow: column;
                 align-items: center;
-                font-size: 20px;
-                video {
+                font-size: 16px;
+                font-weight: 500;
+                text-transform: uppercase;
+                img {
                     max-width: 250px;
                     margin-bottom: 30px;
                 }

@@ -7,6 +7,9 @@ import style from "../cart/cart.module.scss";
 // Toggle Cart Action
 import { toggleCart, deleteCart } from "./cartSlice";
 
+// Empty Cart
+import empty from "../../assets/empty.webp";
+
 // React Icon
 import { AiOutlineClose, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
@@ -18,7 +21,7 @@ function Cart() {
     const cartItems = useSelector((state) => state.allCart.cartPost);
 
     return (
-        <aside className={`${style.cart} ${isCart && style.active}`}>
+        <div className={`${style.cart} ${isCart && style.active}`}>
             <div
                 className={style.shade}
                 onClick={() => dispatch(toggleCart(false))}
@@ -77,18 +80,14 @@ function Cart() {
                         ))
                     ) : (
                         <div className={style.empty}>
-                            <video
-                                src="https://cdnl.iconscout.com/lottie/premium/preview-watermark/empty-cart-5183597-4323095.mp4"
-                                autoPlay
-                                loop
-                            />
-                            Your cart is empty
+                            <img src={empty} alt="Empty" />
+                            Your cart is Empty
                         </div>
                     )}
                 </div>
                 <div className={style.foot}></div>
             </div>
-        </aside>
+        </div>
     );
 }
 

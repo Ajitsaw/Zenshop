@@ -3,8 +3,26 @@
 
 // Variables
 $primary: #333;
-$blue: #2879fe;
+$blue: #088dff;
 $pink: #ff497c;
+
+/* Grid */
+
+$container-max-widths: (
+    sm: 100%,
+    md: 100%,
+    lg: 100%,
+    xl: 100%,
+);
+
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 800px,
+    lg: 1200px,
+    xl: 1400px,
+    xxl: 1600px,
+);
 
 * {
     margin: 0;
@@ -39,7 +57,13 @@ header {
 
 .container {
     max-width: 100%;
-    padding: 0 200px;
+    padding: 0 150px;
+    @include media-breakpoint-down(xl) {
+        padding: 0 80px;
+    }
+    @include media-breakpoint-down(lg) {
+        padding: 0 50px;
+    }
 }
 
 .button {

@@ -6,6 +6,7 @@ import { Col } from "react-bootstrap";
 
 // React Icons
 import { AiOutlineHeart, AiOutlineEye } from "react-icons/ai";
+import { MdAddShoppingCart } from "react-icons/md";
 
 // Add to Cart Action
 import { addCart } from "../cart/cartSlice";
@@ -32,7 +33,7 @@ function ProductSingle({ content }) {
                             className={style.button}
                             onClick={() => dispatch(addCart({ content }))}
                         >
-                            Add to Cart
+                            <MdAddShoppingCart />
                         </div>
                         <div className={style.view}>
                             <AiOutlineEye />

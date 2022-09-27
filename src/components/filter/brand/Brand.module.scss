@@ -1,0 +1,125 @@
+// Variables
+$primary: #333;
+$blue: #088dff;
+$pink: #ff497c;
+
+.group {
+    overflow: hidden;
+    .head {
+        border-bottom: 1px solid #c5c5c5;
+        padding-bottom: 5px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 18px;
+        font-weight: 500;
+        position: relative;
+        cursor: pointer;
+        &.active {
+            span {
+                &:after {
+                    opacity: 0;
+                    transition: all 0.3s ease;
+                }
+            }
+        }
+        span {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translate(0, -50%);
+            width: 14px;
+            height: 14px;
+            &:after {
+                content: "";
+                width: 2px;
+                height: 14px;
+                background: $pink;
+                position: absolute;
+                left: 50%;
+                opacity: 1;
+                transform: translate(-50%, 0);
+                transition: all 0.3s ease;
+            }
+            &:before {
+                content: "";
+                width: 14px;
+                height: 2px;
+                background: $pink;
+                position: absolute;
+                top: 50%;
+                transform: translate(0, -50%);
+            }
+        }
+    }
+    .content {
+        display: none;
+        visibility: hidden;
+        transition: opacity 0.3s ease;
+        padding-bottom: 30px;
+        &.active {
+            position: relative;
+            display: block;
+            visibility: visible;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Checkbox */
+
+        .checkbox {
+            display: flex;
+            flex-flow: row wrap;
+            position: relative;
+            margin: 10px 0 0px;
+            font-weight: 500;
+            font-size: 14px;
+            padding-left: 30px;
+            color: $primary;
+            text-transform: capitalize;
+            input {
+                opacity: 0;
+                position: absolute;
+                width: 100%;
+                height: 21px;
+                cursor: pointer;
+                left: 0;
+                top: 0px;
+                z-index: 6;
+                &:checked + div {
+                    border: solid 1px $pink;
+                }
+                &:checked + div:before {
+                    content: "";
+                    width: 100%;
+                    height: 100%;
+                    background-color: $pink;
+                    position: absolute;
+                    top: 2px;
+                    left: 2px;
+                    color: $primary;
+                }
+            }
+            div {
+                display: block;
+                width: 16px;
+                height: 16px;
+                border: solid 1px $primary;
+                border-radius: 0px;
+                margin-right: 0px;
+                position: absolute;
+                left: 0;
+                top: 2px;
+                cursor: pointer;
+            }
+            a {
+                margin: 0 5px;
+                color: $primary;
+                &:hover {
+                    color: $pink;
+                }
+            }
+            span {
+            }
+        }
+    }
+}
