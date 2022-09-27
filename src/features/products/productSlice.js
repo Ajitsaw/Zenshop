@@ -25,20 +25,17 @@ export const getProducts = createAsyncThunk("products/fetch", async (data) => {
         ) {
             return res.data.products;
         } else {
-            let filtered = res.data.products
-                .filter((item) => {
-                    return item?.title
-                        ?.toLowerCase()
-                        .includes(data.search.toLowerCase());
-                })
-                .filter((item) => item?.category === data.category)
-                .filter((item) =>
-                    data.brand.filter((ele) => {
-                        if (item.brand === ele) {
-                            return item;
-                        }
-                    })
+            let filtered = res.data.products.filter((item) => {
+                return (
+                    item?.category
+                        .toLowerCase()
+                        .includes(data.category.toLowerCase()) ||
+                    data.brand.includes(item.brand.toLowerCase()) || 
+                    item?.title
+                    ?.toLowerCase()
+                    .includes(data.search.toLowerCase())
                 );
+            });
             return filtered;
         }
     } catch (err) {
