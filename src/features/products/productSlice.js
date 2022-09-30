@@ -15,48 +15,49 @@ const url = "https://dummyjson.com/products";
 export const getProducts = createAsyncThunk("products/fetch", async (data) => {
     try {
         const res = await axios.get(url);
-        console.log(res.data.products);
-        console.log(data.brand);
-        // Filter the products
-        if (
-            data.search === "" &&
-            data.brand.length === 0 &&
-            data.category === ""
-        ) {
-            return res.data.products;
+
+        if (data) {
+            return res.data.products.filter(
+                (item) =>
+                    item.title?.toLowerCase().includes(data.toLowerCase()) ||
+                    item.category?.toLowerCase().includes(data.toLowerCase()) ||
+                    item.description?.toLowerCase().includes(data.toLowerCase())
+            );
         } else {
-            let filtered = res.data.products.filter((item) => {
-                return (
-                    item?.category
-                        .toLowerCase()
-                        .includes(data.category.toLowerCase()) ||
-                    data.brand.includes(item.brand.toLowerCase()) || 
-                    item?.title
-                    ?.toLowerCase()
-                    .includes(data.search.toLowerCase())
-                );
-            });
-            return filtered;
+            return res.data.products;
         }
     } catch (err) {
         return err.message;
     }
 });
 
-export const getFilterItems = createAsyncThunk("filter/fetch", async () => {
-    try {
-        const res = await axios.get(url);
-        return res.data.products;
-    } catch (err) {
-        return err.message;
+export const getFilterItems = createAsyncThunk(
+    "filterItems/fetch",
+    async () => {
+        try {
+            const res = await axios.get(url);
+            return res.data.products;
+        } catch (err) {
+            return err.message;
+        }
     }
-});
+);
 
 const productSlice = createSlice({
     name: "products",
     initialState,
     reducers: {
-        addPost: (state, action) => {},
+        filter: (state, action) => {
+            console.log(action.payload);
+            state.posts = state.posts.filter((item) => {
+                return (
+                    item.category
+                        .toLowerCase()
+                        .includes(action.payload.category.toLowerCase()) ||
+                    action.payload.brand.includes(item.brand.toLowerCase())
+                );
+            });
+        },
     },
     extraReducers(builder) {
         builder.addCase(getProducts.pending, (state, action) => {
@@ -91,5 +92,5 @@ const productSlice = createSlice({
         });
     },
 });
-
+export const { filter } = productSlice.actions;
 export default productSlice.reducer;

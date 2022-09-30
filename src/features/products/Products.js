@@ -15,6 +15,7 @@ function Products() {
     const posts = useSelector((state) => state.allProducts.posts);
     const searchStatus = useSelector((state) => state.allProducts.searchStatus);
     // const error = useSelector((state) => state.allProducts.error);
+    console.log(posts)
 
     return (
         <div className={style.products}>

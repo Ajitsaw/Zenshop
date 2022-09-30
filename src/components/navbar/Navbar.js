@@ -1,23 +1,38 @@
 import React from "react";
 
 // Link
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 // Scss
-import './navbar.module.scss'
+import "./navbar.module.scss";
 
 function Navbar() {
     return (
         <nav>
             <ul>
                 <li>
-                    <Link to="/">Home</Link>
+                    <NavLink
+                        className={({ isActive }) => (isActive ? "active" : "")}
+                        to="/"
+                    >
+                        Home
+                    </NavLink>
                 </li>
                 <li>
-                    <Link to="/products">Products</Link>
+                    <NavLink
+                        className={({ isActive }) => (isActive ? "active" : "")}
+                        to="/products"
+                    >
+                        Products
+                    </NavLink>
                 </li>
                 <li>
-                    <Link to="/contact">Contact</Link>
+                    <NavLink
+                        className={({ isActive }) => (isActive ? "active" : "")}
+                        to="/contact"
+                    >
+                        Contact
+                    </NavLink>
                 </li>
             </ul>
         </nav>

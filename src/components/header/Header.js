@@ -7,7 +7,6 @@ import { Container, Row, Col } from "react-bootstrap";
 // React Icons
 import { BsBag } from "react-icons/bs";
 import { IoPersonOutline } from "react-icons/io5";
-import { VscSearch } from "react-icons/vsc";
 import { SiZendframework } from "react-icons/si";
 
 // Link from React Router DOM
@@ -18,7 +17,7 @@ import style from "./header.module.scss";
 
 // Component UI
 import Darkmode from "../../features/darkmode/Darkmode";
-
+import Search from "../filter/search/Search";
 import Navbar from "../navbar/Navbar";
 
 // Toggle Cart Reducer
@@ -42,18 +41,20 @@ function Header() {
             <div className={style.main}>
                 <Container>
                     <Row className="justify-content-between align-items-center">
-                        <Col lg="3">
-                            <Link to="/" className={style.logo}>
-                                <SiZendframework />
-                            </Link>
+                        <Col lg="6">
+                            <div className={style.left}>
+                                <Link to="/" className={style.logo}>
+                                    <SiZendframework />
+                                </Link>
+                                <Navbar />
+                            </div>
                         </Col>
                         <Col lg="6">
-                            <Navbar />
-                        </Col>
-                        <Col lg="3">
                             <div className={style.right}>
                                 <div className={style.single}>
-                                    <VscSearch />
+                                    <div className={style.searchBox__holder}>
+                                        <Search />
+                                    </div>
                                 </div>
                                 <div
                                     className={style.single}

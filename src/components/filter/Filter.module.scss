@@ -4,3 +4,12 @@ aside {
     border-radius: 5px;
     padding: 30px;
 }
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    h3 {
+        font-weight: 500;
+    }
+}

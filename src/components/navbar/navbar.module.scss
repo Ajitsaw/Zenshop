@@ -17,6 +17,9 @@ nav {
                     color: $blue;
                 }
             }
+            .active {
+                color: $blue !important;
+            }
         }
     }
 }

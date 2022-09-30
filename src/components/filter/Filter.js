@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 
 // Filters
-import Search from "./search/Search";
 import Brand from "./brand/Brand";
 import Category from "./category/Category";
 
@@ -9,7 +8,10 @@ import Category from "./category/Category";
 import "../filter/Filter.module.scss";
 
 // Filter Api call
-import { getProducts, getFilterItems } from "../../features/products/productSlice";
+import {
+    filter,
+    getFilterItems,
+} from "../../features/products/productSlice";
 
 // Dispatch
 import { useDispatch } from "react-redux";
@@ -19,35 +21,37 @@ function Filter() {
         brand: [],
         category: "",
         rating: "",
-        search: "",
     });
 
     const dispatch = useDispatch();
 
     // Call the api and Dispatch the posts
     useEffect(() => {
-        console.log("useEffect");
-        dispatch(getProducts(filterState));
         dispatch(getFilterItems());
-    }, [filterState, dispatch]);
-
-    const receiveSearch = useCallback((e) => {
-        setFilterState((prev) => ({ ...prev, search: e }));
-    }, []);
+    }, [dispatch]);
 
     const receiveCat = useCallback((e) => {
         setFilterState((prev) => ({ ...prev, category: e }));
     }, []);
 
-    const receivebrand = useCallback((e) => {
+    const receiveBrand = useCallback((e) => {
         setFilterState((prev) => ({ ...prev, brand: [...e] }));
     }, []);
 
     return (
         <aside>
-            <Search state={receiveSearch} />
-            <Brand state={receivebrand} />
+            <div className="top">
+                <h3>Filter</h3>
+                <div className="clear">Clear</div>
+            </div>
+            <Brand state={receiveBrand} />
             <Category state={receiveCat} />
+            <button
+                className="button w-100"
+                onClick={() => dispatch(filter(filterState))}
+            >
+                Apply Filter
+            </button>
         </aside>
     );
 }
