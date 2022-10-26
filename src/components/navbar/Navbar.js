@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 // Link
 import { NavLink } from "react-router-dom";
@@ -7,8 +8,11 @@ import { NavLink } from "react-router-dom";
 import "./navbar.module.scss";
 
 function Navbar() {
+    // Get DarkMode Object from Store
+    const isDark = useSelector((state) => state.darkMode.toggle);
+
     return (
-        <nav>
+        <nav className={isDark ? "dark" : ""}>
             <ul>
                 <li>
                     <NavLink

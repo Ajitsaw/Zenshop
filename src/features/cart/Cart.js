@@ -19,6 +19,17 @@ function Cart() {
     // Get Cart Object from Store
     const isCart = useSelector((state) => state.allCart.toggle);
     const cartItems = useSelector((state) => state.allCart.cartPost);
+    // console.log(cartItems);
+    const total = () => {
+        let totaPrice = 0;
+        cartItems.map((item) => {
+            return (totaPrice +=
+                (item.price -
+                    Math.floor((item.discountPercentage * item.price) / 100)) *
+                item.count);
+        });
+        return totaPrice;
+    };
 
     return (
         <div className={`${style.cart} ${isCart && style.active}`}>
@@ -85,7 +96,13 @@ function Cart() {
                         </div>
                     )}
                 </div>
-                <div className={style.foot}></div>
+                <div className={style.foot}>
+                    <div className={style.head}>
+                        <h3>Subtotal</h3>
+                        <div className={style.total}>${total()}</div>
+                    </div>
+                </div>
+                <div className={style.buttons}></div>
             </div>
         </div>
     );

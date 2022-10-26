@@ -7,9 +7,14 @@ aside {
 
 .top {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     margin-bottom: 30px;
     h3 {
         font-weight: 500;
+    }
+    .clear {
+        cursor: pointer;
+        color: #ff497c;
     }
 }

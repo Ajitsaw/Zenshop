@@ -5,12 +5,13 @@ import Brand from "./brand/Brand";
 import Category from "./category/Category";
 
 // SCSS
-import "../filter/Filter.module.scss";
+import "../filter/Filter.scss";
 
 // Filter Api call
 import {
     filter,
     getFilterItems,
+    getProducts,
 } from "../../features/products/productSlice";
 
 // Dispatch
@@ -38,11 +39,24 @@ function Filter() {
         setFilterState((prev) => ({ ...prev, brand: [...e] }));
     }, []);
 
+    const clear = () => {
+        dispatch(getProducts());
+        setFilterState({
+            brand: [],
+            category: "",
+            rating: "",
+        });
+        console.log(filterState);
+        dispatch(filter(filterState));
+    };
+
     return (
         <aside>
             <div className="top">
                 <h3>Filter</h3>
-                <div className="clear">Clear</div>
+                <div className="clear" onClick={clear}>
+                    Clear
+                </div>
             </div>
             <Brand state={receiveBrand} />
             <Category state={receiveCat} />

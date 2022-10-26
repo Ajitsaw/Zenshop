@@ -7,14 +7,25 @@ header {
     position: absolute;
     top: 0;
     width: 100%;
+    transition: all .3s ease;
+
+    &.dark {
+        background-color: #2d2d2d;
+        transition: all .3s ease;
+    }
     .top {
         background-color: $blue;
         text-align: center;
         color: #fff;
         padding: 15px 0;
         font-size: 14px;
+        transition: all .3s ease;
         a {
             color: #fff;
+        }
+        &.dark {
+            background-color: #000;
+            transition: all .3s ease;
         }
     }
     .logo {

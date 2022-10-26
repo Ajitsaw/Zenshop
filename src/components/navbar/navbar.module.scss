@@ -5,6 +5,14 @@ $blue: #088dff;
 nav {
     display: flex;
     justify-content: center;
+    &.dark {
+        li {
+            a {
+                color: #fff;
+                transition: all 0.3s ease;
+            }
+        }
+    }
     ul {
         display: flex;
         li {
@@ -13,6 +21,7 @@ nav {
                 text-decoration: none;
                 margin: 0 20px;
                 color: $primary;
+                transition: all 0.3s ease;
                 &:hover {
                     color: $blue;
                 }

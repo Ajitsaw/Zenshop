@@ -19,19 +19,21 @@ import style from "./header.module.scss";
 import Darkmode from "../../features/darkmode/Darkmode";
 import Search from "../filter/search/Search";
 import Navbar from "../navbar/Navbar";
-
 // Toggle Cart Reducer
 import { toggleCart } from "../../features/cart/cartSlice";
 
 function Header() {
     const dispatch = useDispatch();
 
+    // Get DarkMode Object from Store
+    const isDark = useSelector((state) => state.darkMode.toggle);
+
     // Get Cart Object from Store
     const cartProducts = useSelector((state) => state.allCart.cartPost);
 
     return (
-        <header>
-            <div className={style.top}>
+        <header className={isDark ? style.dark : ''}>
+            <div className={`${style.top} ${isDark ? style.dark : ''}`}>
                 20% STUDENT DISCOUNT PLUS FREE NEXT DAY DELIVERY, EXCLUDES SALE
                 ON{" "}
                 <Link to="/products">
