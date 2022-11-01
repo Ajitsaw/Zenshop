@@ -11,6 +11,7 @@ import { MdAddShoppingCart } from "react-icons/md";
 // Add to Cart Action
 import { addCart } from "../cart/cartSlice";
 
+
 // Scss
 import style from "../products/product.module.scss";
 
